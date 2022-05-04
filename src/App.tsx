@@ -1,10 +1,10 @@
 import "./App.css";
-import { DatePicker } from "antd";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
     <div className="App">
-      <DatePicker />
+      <Outlet />
     </div>
   );
 };

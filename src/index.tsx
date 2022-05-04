@@ -3,10 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { readEnv } from "./lib/utils/env/readEnv";
 import { GRAPHQL_URL_KEY } from "./lib/utils/env/keys";
+import Posts from "./ui/posts/Posts";
 
 const client = new ApolloClient({
   uri: readEnv(GRAPHQL_URL_KEY),
@@ -21,7 +22,12 @@ root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <Router>
-        <App />
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Posts />} />
+            <Route path="posts" element={<Posts />}></Route>
+          </Route>
+        </Routes>
       </Router>
     </ApolloProvider>
   </React.StrictMode>
