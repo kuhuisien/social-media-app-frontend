@@ -1,0 +1,1 @@
+export const GRAPHQL_URL_KEY = "REACT_APP_GRAPHQL_URL";

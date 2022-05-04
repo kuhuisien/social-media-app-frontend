@@ -5,9 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { readEnv } from "./lib/utils/env/readEnv";
+import { GRAPHQL_URL_KEY } from "./lib/utils/env/keys";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: readEnv(GRAPHQL_URL_KEY),
   cache: new InMemoryCache(),
 });
 
