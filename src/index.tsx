@@ -4,16 +4,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { readEnv } from "./lib/utils/env/readEnv";
-import { GRAPHQL_URL_KEY } from "./lib/utils/env/keys";
+import { ApolloProvider } from "@apollo/client";
 import Posts from "./ui/posts/Posts";
 import Profile from "ui/profile/Profile";
-
-const client = new ApolloClient({
-  uri: readEnv(GRAPHQL_URL_KEY),
-  cache: new InMemoryCache(),
-});
+import { apolloClient } from "lib/utils/apolloClient/apolloClient";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -21,7 +15,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apolloClient}>
       <Router>
         <Routes>
           <Route path="/" element={<App />}>
