@@ -11,7 +11,7 @@ const Post = ({
   username,
   published,
   isMyProfile,
-  id,
+  postId,
 }: PostProps) => {
   const postContainerClass = published
     ? styles.postContainer
@@ -29,9 +29,9 @@ const Post = ({
         Posted at {formatDate(createdAt)}
       </div>
 
-      {isMyProfile && !published && <PublishButton postId={id} />}
+      {isMyProfile && !published && <PublishButton postId={postId} />}
 
-      {isMyProfile && published && <UnpublishButton postId={id} />}
+      {isMyProfile && published && <UnpublishButton postId={postId} />}
     </div>
   );
 };

@@ -10,7 +10,7 @@ describe("Post", () => {
     title: "testTitle",
     content: "testContent",
     createdAt: "1651562107328",
-    id: "1",
+    postId: "1",
     username: "testUsername",
     published: false,
     isMyProfile: false,

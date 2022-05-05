@@ -50,7 +50,7 @@ const Posts = () => {
               key={post.id}
               title={post.title}
               content={post.content}
-              id={post.id}
+              postId={post.id}
               username={post.user.name}
               createdAt={post.createdAt}
               published={post.published}
