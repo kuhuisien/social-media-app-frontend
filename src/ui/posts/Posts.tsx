@@ -22,8 +22,6 @@ const GET_POSTS = gql`
 const Posts = () => {
   const { data, error, loading } = useQuery(GET_POSTS);
 
-  console.log(error);
-
   if (error) {
     return <div>Error</div>;
   }
@@ -33,10 +31,10 @@ const Posts = () => {
   }
 
   return (
-    <div>
+    <div className={styles.postsContainer}>
       <AppTitle displayText="Posts"></AppTitle>
 
-      <div className={styles.postsContainer}>
+      <div className={styles.postListContainer}>
         {data.posts.map(
           (post: {
             id: Key | null;

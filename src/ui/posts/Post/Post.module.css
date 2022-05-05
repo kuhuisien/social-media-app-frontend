@@ -3,7 +3,7 @@
   flex-direction: column;
   padding: 0.5rem;
   align-items: flex-start;
-  width: 80%;
+  width: 100%;
   border-radius: 0.2rem;
   border: 0.1rem solid lightblue;
 }
