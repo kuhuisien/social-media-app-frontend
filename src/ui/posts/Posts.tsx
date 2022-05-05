@@ -5,7 +5,7 @@ import Post from "../../lib/components/Post/Post";
 import styles from "./Posts.module.css";
 import AppTitle from "lib/components/AppTitle/AppTitle";
 
-const GET_POSTS = gql`
+export const GET_POSTS = gql`
   query {
     posts {
       id
@@ -14,6 +14,7 @@ const GET_POSTS = gql`
       createdAt
       published
       user {
+        id
         name
       }
     }
@@ -41,7 +42,7 @@ const Posts = () => {
             id: Key | null;
             title: string | null;
             content: string | null;
-            user: { name: string | null };
+            user: { name: string | null; id: string | null };
             createdAt: string | null;
             published: boolean;
             isMyProfile: boolean;
@@ -52,6 +53,7 @@ const Posts = () => {
               content={post.content}
               postId={post.id}
               username={post.user.name}
+              userId={post.user.id}
               createdAt={post.createdAt}
               published={post.published}
               isMyProfile={false} // posts display always treat post as public

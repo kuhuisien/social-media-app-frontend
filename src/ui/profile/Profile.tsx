@@ -7,7 +7,7 @@ import Post from "lib/components/Post/Post";
 import { Key } from "react";
 import AddPostButton from "./addPostButton/AddPostButton";
 
-const GET_PROFILE = gql`
+export const GET_PROFILE = gql`
   query ($userId: ID!) {
     profile(userId: $userId) {
       bio
@@ -71,6 +71,7 @@ const Profile = () => {
               postId={post.id}
               published={post.published}
               username={""} // avoid showing username
+              userId={profile.user.id}
               isMyProfile={profile.isMyProfile}
             />
           )
