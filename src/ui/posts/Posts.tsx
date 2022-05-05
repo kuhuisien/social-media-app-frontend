@@ -1,7 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import { Key } from "react";
 import Spinner from "lib/components/Spinner/Spinner";
-import Post from "./Post/Post";
+import Post from "../../lib/components/Post/Post";
 import styles from "./Posts.module.css";
 import AppTitle from "lib/components/AppTitle/AppTitle";
 

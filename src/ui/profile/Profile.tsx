@@ -3,7 +3,7 @@ import { gql, useQuery } from "@apollo/client";
 import Spinner from "lib/components/Spinner/Spinner";
 import AppTitle from "lib/components/AppTitle/AppTitle";
 import styles from "./Profile.module.css";
-import Post from "ui/posts/Post/Post";
+import Post from "lib/components/Post/Post";
 import { Key } from "react";
 import AddPostButton from "./addPostButton/AddPostButton";
 
