@@ -17,7 +17,7 @@ const PUBLISH_POST = gql`
 `;
 
 const PublishButton = ({ postId }: PublishButtonProps) => {
-  const [publishPost, { data, error, loading }] = useMutation(PUBLISH_POST);
+  const [publishPost] = useMutation(PUBLISH_POST);
 
   const onClickPublishButton = () => {
     publishPost({ variables: { postId } });

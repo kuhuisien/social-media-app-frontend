@@ -17,7 +17,7 @@ const UNPUBLISH_POST = gql`
 `;
 
 const UnpublishButton = ({ postId }: UnpublishButtonProps) => {
-  const [unpublishPost, { data, error, loading }] = useMutation(UNPUBLISH_POST);
+  const [unpublishPost] = useMutation(UNPUBLISH_POST);
 
   const onClickUnpublishButton = () => {
     unpublishPost({ variables: { postId } });
