@@ -9,6 +9,7 @@ import Posts from "./ui/posts/Posts";
 import Profile from "ui/profile/Profile";
 import { apolloClient } from "lib/utils/apolloClient/apolloClient";
 import Signin from "ui/signin/Signin";
+import Signup from "ui/signup/Signup";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -24,6 +25,7 @@ root.render(
             <Route path="posts" element={<Posts />}></Route>
             <Route path="profile/:id" element={<Profile />}></Route>
             <Route path="signin" element={<Signin />}></Route>
+            <Route path="signup" element={<Signup />}></Route>
           </Route>
         </Routes>
       </Router>

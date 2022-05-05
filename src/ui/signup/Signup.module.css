@@ -1,0 +1,12 @@
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.signupError {
+  margin-top: 1rem;
+  color: red;
+}
