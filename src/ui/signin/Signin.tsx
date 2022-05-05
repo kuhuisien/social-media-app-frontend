@@ -22,7 +22,7 @@ export const SIGN_IN = gql`
 const Signin = () => {
   const navigate = useNavigate();
 
-  const [signin, { data }] = useMutation(SIGN_IN);
+  const [signin, { data, loading }] = useMutation(SIGN_IN);
 
   const [error, setError] = useState("");
 
@@ -70,7 +70,9 @@ const Signin = () => {
           type="password"
         ></AppInput>
 
-        <Button htmlType="submit">Sign In</Button>
+        <Button htmlType="submit" disabled={loading}>
+          {loading ? "Signing in" : "Sign in"}
+        </Button>
 
         {error && <div className={styles.signinError}>{error}</div>}
       </Form>
