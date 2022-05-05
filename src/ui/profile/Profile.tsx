@@ -20,6 +20,7 @@ const GET_PROFILE = gql`
           title
           content
           createdAt
+          published
         }
       }
     }
