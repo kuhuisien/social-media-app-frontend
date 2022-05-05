@@ -12,7 +12,7 @@ describe("AppTitle", () => {
     render(<AppTitle {...props} />);
   };
 
-  test("shoul render", async () => {
+  test("should render", async () => {
     renderComponent();
     expect(screen.getByText(defaultProps.displayText)).toBeInTheDocument();
   });
