@@ -8,6 +8,7 @@ import { ApolloProvider } from "@apollo/client";
 import Posts from "./ui/posts/Posts";
 import Profile from "ui/profile/Profile";
 import { apolloClient } from "lib/utils/apolloClient/apolloClient";
+import Signin from "ui/signin/Signin";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -22,6 +23,7 @@ root.render(
             <Route index element={<Posts />} />
             <Route path="posts" element={<Posts />}></Route>
             <Route path="profile/:id" element={<Profile />}></Route>
+            <Route path="signin" element={<Signin />}></Route>
           </Route>
         </Routes>
       </Router>
