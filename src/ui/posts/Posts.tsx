@@ -44,6 +44,7 @@ const Posts = () => {
             user: { name: string | null };
             createdAt: string | null;
             published: boolean;
+            isMyProfile: boolean;
           }) => (
             <Post
               key={post.id}
@@ -53,6 +54,7 @@ const Posts = () => {
               username={post.user.name}
               createdAt={post.createdAt}
               published={post.published}
+              isMyProfile={false} // posts display always treat post as public
             />
           )
         )}

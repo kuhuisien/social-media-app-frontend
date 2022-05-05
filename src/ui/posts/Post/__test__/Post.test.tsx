@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { formatDate } from "lib/utils/datetime/formatDate";
 import Post from "../Post";
 import { PostProps } from "../Post.types";
+import { MockedProvider } from "@apollo/client/testing";
 
 describe("Post", () => {
   const defaultProps: PostProps = {
@@ -12,12 +13,17 @@ describe("Post", () => {
     id: "1",
     username: "testUsername",
     published: false,
+    isMyProfile: false,
   };
 
   const renderComponent = (args?: any) => {
     const props = { ...defaultProps, ...args };
 
-    render(<Post {...props} />);
+    render(
+      <MockedProvider mocks={[]} addTypename={false}>
+        <Post {...props} />
+      </MockedProvider>
+    );
   };
 
   test("should render title", async () => {
@@ -46,5 +52,24 @@ describe("Post", () => {
     expect(
       screen.getByText(defaultProps.username as string)
     ).toBeInTheDocument();
+  });
+
+  test("should not render Publish Button or Unpublish button if isMyProfile=false", async () => {
+    renderComponent();
+
+    expect(screen.queryByText("Publish")).not.toBeInTheDocument();
+    expect(screen.queryByText("Unpublish")).not.toBeInTheDocument();
+  });
+
+  test("should render Publish Button if isMyProfile=true and published=false", async () => {
+    renderComponent({ isMyProfile: true });
+
+    expect(screen.queryByText("Publish")).toBeInTheDocument();
+  });
+
+  test("should render Unpublish Button if isMyProfile=true and published=true", async () => {
+    renderComponent({ isMyProfile: true, published: true });
+
+    expect(screen.queryByText("Unpublish")).toBeInTheDocument();
   });
 });

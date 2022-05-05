@@ -71,6 +71,7 @@ const Profile = () => {
               id={post.id}
               published={post.published}
               username={""} // avoid showing username
+              isMyProfile={profile.isMyProfile}
             />
           )
         )}
