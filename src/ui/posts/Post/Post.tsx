@@ -2,7 +2,7 @@ import { PostProps } from "./Post.types";
 import styles from "./Post.module.css";
 import { formatDate } from "lib/utils/datetime/formatDate";
 
-const Post = ({ title, content, createdAt, id, username }: PostProps) => {
+const Post = ({ title, content, createdAt, username }: PostProps) => {
   return (
     <div className={styles.postContainer}>
       <div className={styles.postAuthor}>{username}</div>
