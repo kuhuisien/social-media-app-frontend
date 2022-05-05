@@ -9,6 +9,10 @@
   margin-bottom: 1rem;
 }
 
+.unpublishedPost {
+  background-color: rgb(169, 205, 228);
+}
+
 .postAuthor {
   font-size: 1.2rem;
   font-weight: 600;
@@ -16,6 +20,10 @@
 
 .postTitle {
   font-weight: 500;
+}
+
+.postContent {
+  text-align: left;
 }
 
 .postCreationDateTime {

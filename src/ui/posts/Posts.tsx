@@ -12,6 +12,7 @@ const GET_POSTS = gql`
       title
       content
       createdAt
+      published
       user {
         name
       }
@@ -42,6 +43,7 @@ const Posts = () => {
             content: string | null;
             user: { name: string | null };
             createdAt: string | null;
+            published: boolean;
           }) => (
             <Post
               key={post.id}
@@ -50,6 +52,7 @@ const Posts = () => {
               id={post.id}
               username={post.user.name}
               createdAt={post.createdAt}
+              published={post.published}
             />
           )
         )}

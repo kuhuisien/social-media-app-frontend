@@ -60,6 +60,7 @@ const Profile = () => {
             title: string | null;
             content: string | null;
             createdAt: string | null;
+            published: boolean;
           }) => (
             <Post
               key={post.id}
@@ -67,6 +68,7 @@ const Profile = () => {
               content={post.content}
               createdAt={post.createdAt}
               id={post.id}
+              published={post.published}
               username={""} // avoid showing username
             />
           )

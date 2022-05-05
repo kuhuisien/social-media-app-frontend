@@ -10,4 +10,6 @@ export interface PostProps {
   id: React.Key | null | undefined;
 
   username: string | null;
+
+  published: boolean;
 }

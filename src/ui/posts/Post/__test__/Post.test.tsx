@@ -11,6 +11,7 @@ describe("Post", () => {
     createdAt: "1651562107328",
     id: "1",
     username: "testUsername",
+    published: false,
   };
 
   const renderComponent = (args?: any) => {
