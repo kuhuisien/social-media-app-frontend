@@ -11,6 +11,8 @@ export interface PostProps {
 
   username: string | null;
 
+  userId: string | null;
+
   published: boolean;
 
   isMyProfile: boolean;

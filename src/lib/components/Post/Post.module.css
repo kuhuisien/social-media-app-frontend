@@ -16,6 +16,11 @@
 .postAuthor {
   font-size: 1.2rem;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.postAuthor:hover {
+  text-decoration: underline;
 }
 
 .postTitle {

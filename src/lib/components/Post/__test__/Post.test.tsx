@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { formatDate } from "lib/utils/datetime/formatDate";
 import Post from "../Post";
 import { PostProps } from "../Post.types";
 import { MockedProvider } from "@apollo/client/testing";
+import { BrowserRouter as Router } from "react-router-dom";
 
 describe("Post", () => {
   const defaultProps: PostProps = {
@@ -12,6 +13,7 @@ describe("Post", () => {
     createdAt: "1651562107328",
     postId: "1",
     username: "testUsername",
+    userId: "10",
     published: false,
     isMyProfile: false,
   };
@@ -20,15 +22,24 @@ describe("Post", () => {
     const props = { ...defaultProps, ...args };
 
     render(
-      <MockedProvider mocks={[]} addTypename={false}>
-        <Post {...props} />
-      </MockedProvider>
+      <Router>
+        <MockedProvider mocks={[]} addTypename={false}>
+          <Post {...props} />
+        </MockedProvider>
+      </Router>
     );
   };
 
   test("should render title", async () => {
     renderComponent();
     expect(screen.getByText(defaultProps.title as string)).toBeInTheDocument();
+  });
+
+  test("should trigger title click handler without error", async () => {
+    renderComponent();
+    const component = screen.getByText(defaultProps.title as string);
+
+    fireEvent.click(component);
   });
 
   test("should render content", async () => {
