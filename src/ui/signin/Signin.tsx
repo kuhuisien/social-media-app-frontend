@@ -70,8 +70,8 @@ const Signin = () => {
           type="password"
         ></AppInput>
 
-        <Button htmlType="submit" disabled={loading}>
-          {loading ? "Signing in" : "Sign in"}
+        <Button htmlType="submit" disabled={loading} loading={loading}>
+          Sign in
         </Button>
 
         {error && <div className={styles.signinError}>{error}</div>}

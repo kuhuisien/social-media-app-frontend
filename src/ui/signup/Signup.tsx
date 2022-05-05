@@ -81,8 +81,8 @@ const Signup = () => {
           required
         ></AppTextArea>
 
-        <Button htmlType="submit" disabled={loading}>
-          {loading ? "Signing up..." : "Sign up"}
+        <Button htmlType="submit" disabled={loading} loading={loading}>
+          Sign up
         </Button>
 
         {error && <div className={styles.signupError}>{error}</div>}
