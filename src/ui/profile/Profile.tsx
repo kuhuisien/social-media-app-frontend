@@ -3,14 +3,15 @@ import { gql, useQuery } from "@apollo/client";
 import Spinner from "lib/components/Spinner/Spinner";
 import AppTitle from "lib/components/AppTitle/AppTitle";
 import styles from "./Profile.module.css";
-import { Button } from "antd";
 import Post from "ui/posts/Post/Post";
 import { Key } from "react";
+import AddPostButton from "./addPostButton/AddPostButton";
 
 const GET_PROFILE = gql`
   query ($userId: ID!) {
     profile(userId: $userId) {
       bio
+      isMyProfile
       user {
         id
         name
@@ -47,9 +48,7 @@ const Profile = () => {
       <div className={styles.profileTitleContainer}>
         <AppTitle displayText={profile.user.name}></AppTitle>
 
-        <Button size="large" type="primary">
-          Add Post
-        </Button>
+        {profile.isMyProfile && <AddPostButton />}
       </div>
 
       <div className={styles.profileBioContainer}>{profile.bio}</div>
