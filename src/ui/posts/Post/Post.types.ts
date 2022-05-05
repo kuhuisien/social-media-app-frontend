@@ -7,7 +7,7 @@ export interface PostProps {
 
   createdAt: string | null;
 
-  id: React.Key | null;
+  id: React.Key | null | undefined;
 
   username: string | null;
 }
