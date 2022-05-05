@@ -85,7 +85,7 @@ const Signup = () => {
           {loading ? "Signing up..." : "Sign up"}
         </Button>
 
-        {error && <div className={styles.signinError}>{error}</div>}
+        {error && <div className={styles.signupError}>{error}</div>}
       </Form>
     </div>
   );
