@@ -6,6 +6,7 @@ import styles from "./Profile.module.css";
 import Post from "lib/components/Post/Post";
 import { Key } from "react";
 import AddPostButton from "./addPostButton/AddPostButton";
+import ErrorDisplay from "lib/components/Error/ErrorDisplay/ErrorDisplay";
 
 export const GET_PROFILE = gql`
   query ($userId: ID!) {
@@ -35,7 +36,7 @@ const Profile = () => {
   });
 
   if (error) {
-    return <div>Error</div>;
+    return <ErrorDisplay />;
   }
 
   if (loading) {

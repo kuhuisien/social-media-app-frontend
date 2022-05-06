@@ -4,6 +4,7 @@ import Spinner from "lib/components/Spinner/Spinner";
 import Post from "../../lib/components/Post/Post";
 import styles from "./Posts.module.css";
 import AppTitle from "lib/components/AppTitle/AppTitle";
+import ErrorDisplay from "lib/components/Error/ErrorDisplay/ErrorDisplay";
 
 export const GET_POSTS = gql`
   query {
@@ -25,7 +26,7 @@ const Posts = () => {
   const { data, error, loading } = useQuery(GET_POSTS);
 
   if (error) {
-    return <div>Error</div>;
+    return <ErrorDisplay />;
   }
 
   if (loading) {
