@@ -26,7 +26,7 @@ const Posts = () => {
   const { data, error, loading } = useQuery(GET_POSTS);
 
   if (error) {
-    return <ErrorDisplay />;
+    return <ErrorDisplay error={error} />;
   }
 
   if (loading) {

@@ -36,7 +36,7 @@ const Profile = () => {
   });
 
   if (error) {
-    return <ErrorDisplay />;
+    return <ErrorDisplay error={error} />;
   }
 
   if (loading) {
