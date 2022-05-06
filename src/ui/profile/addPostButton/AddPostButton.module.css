@@ -1,0 +1,8 @@
+.OkButton {
+  margin-right: 0.5rem;
+}
+
+.addPostError {
+  margin-bottom: 1rem;
+  color: red;
+}
