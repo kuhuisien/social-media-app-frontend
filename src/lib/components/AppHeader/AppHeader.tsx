@@ -2,6 +2,7 @@ import { Button, PageHeader } from "antd";
 import { AuthContext } from "lib/context/authContext/authContext";
 import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import MyProfileButton from "./MyProfileButton/MyProfileButton";
 
 const AppHeader = () => {
   const authCtx = useContext(AuthContext);
@@ -24,11 +25,7 @@ const AppHeader = () => {
       ghost={false}
       onBack={pathname === "/" ? undefined : () => navigate(-1)}
       extra={[
-        isSignedIn && (
-          <Button key="profile" type="primary">
-            My profile
-          </Button>
-        ),
+        isSignedIn && <MyProfileButton key="profile"></MyProfileButton>,
         isSignedIn && (
           <Button key="logout" onClick={() => authCtx.signout()}>
             Log out

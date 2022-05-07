@@ -28,7 +28,10 @@ describe("retrieveStoredToken", () => {
 
     const result = retrieveStoredToken();
     expect(result?.token).toEqual(MOCK_TOKEN);
-    expect(result?.duration).toEqual(3600000); // one hour = 3600000 milli sec
+
+    // one hour = 3600000 milli sec
+    // not doing assertion of equal to 3600000 due to new Date() delay
+    expect(result?.duration).toBeGreaterThan(3500000);
   });
 
   it("return null if local storage contains token field and future expiration time which is less than 1 minute ahead", () => {
