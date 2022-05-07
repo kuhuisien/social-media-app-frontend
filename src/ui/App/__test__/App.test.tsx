@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import App from "./App";
+import App from "../App";
 import { MemoryRouter } from "react-router-dom";
 
-describe("ErrorDisplay", () => {
+describe("App", () => {
   test("renders header with signin and signup buttons when it is not signin or signup page", () => {
     render(
       <MemoryRouter

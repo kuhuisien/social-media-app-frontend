@@ -1,4 +1,3 @@
-import "./App.css";
 import { Outlet, useLocation } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "lib/components/Error/ErrorFallback/ErrorFallback";
