@@ -2,8 +2,9 @@ import { gql, useMutation } from "@apollo/client";
 import { Button, Form } from "antd";
 import AppTitle from "lib/components/AppTitle/AppTitle";
 import AppInput from "lib/components/formInputs/AppInput/AppInput";
-import { TOKEN } from "lib/utils/localStorageKey";
-import { useEffect, useState } from "react";
+import { AuthContext } from "lib/context/authContext/authContext";
+import { getExpirationDateTime } from "lib/context/authContext/utils/getExpirationDateTime";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Signin.module.css";
 import { signinFormFields } from "./signinFormFields";
@@ -15,12 +16,15 @@ export const SIGN_IN = gql`
         message
       }
       token
+      expiresIn
     }
   }
 `;
 
 const Signin = () => {
   const navigate = useNavigate();
+
+  const authCxt = useContext(AuthContext);
 
   const [signin, { data, loading }] = useMutation(SIGN_IN);
 
@@ -33,7 +37,8 @@ const Signin = () => {
       }
 
       if (data.signin.token) {
-        localStorage.setItem(TOKEN, data.signin.token);
+        const expirationDateTime = getExpirationDateTime(data.signin.expiresIn);
+        authCxt.signin(data.signin.token, expirationDateTime);
         navigate("/");
       }
     }

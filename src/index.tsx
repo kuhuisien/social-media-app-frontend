@@ -3,13 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { ApolloProvider } from "@apollo/client";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import Posts from "./ui/posts/Posts";
 import Profile from "ui/profile/Profile";
-import { apolloClient } from "lib/utils/apolloClient/apolloClient";
 import Signin from "ui/signin/Signin";
 import Signup from "ui/signup/Signup";
+import { AuthContextProvider } from "lib/context/authContext/authContext";
+import ApolloProviderWrapper from "lib/ApolloProviderWrapper/ApolloProviderWrapper";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -17,19 +22,22 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={apolloClient}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<Posts />} />
-            <Route path="posts" element={<Posts />}></Route>
-            <Route path="profile/:id" element={<Profile />}></Route>
-            <Route path="signin" element={<Signin />}></Route>
-            <Route path="signup" element={<Signup />}></Route>
-          </Route>
-        </Routes>
-      </Router>
-    </ApolloProvider>
+    <AuthContextProvider>
+      <ApolloProviderWrapper>
+        <Router>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<Posts />} />
+              <Route path="posts" element={<Posts />}></Route>
+              <Route path="profile/:id" element={<Profile />}></Route>
+              <Route path="signin" element={<Signin />}></Route>
+              <Route path="signup" element={<Signup />}></Route>
+              <Route path="*" element={<Navigate to="/" replace />}></Route>
+            </Route>
+          </Routes>
+        </Router>
+      </ApolloProviderWrapper>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 
