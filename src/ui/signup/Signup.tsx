@@ -3,8 +3,9 @@ import { Button, Form } from "antd";
 import AppTitle from "lib/components/AppTitle/AppTitle";
 import AppInput from "lib/components/formInputs/AppInput/AppInput";
 import AppTextArea from "lib/components/formInputs/AppTextArea/AppTextArea";
-import { TOKEN } from "lib/utils/localStorageKey";
-import { useEffect, useState } from "react";
+import { AuthContext } from "lib/context/authContext/authContext";
+import { getExpirationDateTime } from "lib/context/authContext/utils/getExpirationDateTime";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Signup.module.css";
 import { signupFormFields } from "./signupFormFields";
@@ -22,6 +23,8 @@ export const SIGN_UP = gql`
 
 const Signup = () => {
   const navigate = useNavigate();
+
+  const authCxt = useContext(AuthContext);
 
   const [error, setError] = useState("");
 
@@ -48,7 +51,8 @@ const Signup = () => {
       }
 
       if (data.signup.token) {
-        localStorage.setItem(TOKEN, data.signup.token);
+        const expirationDateTime = getExpirationDateTime(data.signup.expiresIn);
+        authCxt.signin(data.signup.token, expirationDateTime);
         navigate("/");
       }
     }
